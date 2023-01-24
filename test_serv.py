@@ -19,7 +19,7 @@ class MyHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
         response = f'your choice is {choice} and the amount is {amount}, the result is {result}'
-        self.wfile.write(b'UwU')
+        self.wfile.write(str.encode(response))
 
 with socketserver.TCPServer(("", PORT), MyHandler) as httpd:
     print("serving at port", PORT)
